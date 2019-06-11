@@ -417,7 +417,7 @@ VpnInfo::VpnInfo(QString name, StoredServer* ss, MainWindow* m)
         openconnect_set_token_callbacks(this->vpninfo, this, lock_token_vfn, unlock_token_vfn);
         openconnect_set_token_mode(this->vpninfo,
             (oc_token_mode_t)ss->get_token_type(),
-            ss->get_token_str().toLatin1().data());
+            ss->get_token_str() == "--" ? NULL : ss->get_token_str().toLatin1().data());
     }
 
     openconnect_set_protocol(vpninfo, ss->get_protocol());

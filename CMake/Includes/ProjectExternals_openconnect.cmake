@@ -72,6 +72,12 @@ ExternalProject_Add_Step(openconnect-${openconnect-TAG} deploy_libs
 add_executable(openconnect::app IMPORTED)
 set_property(TARGET openconnect::app PROPERTY IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/external/lib/openconnect.exe)
 
+add_executable(openconnect::stokenexe IMPORTED)
+set_property(TARGET openconnect::stokenexe PROPERTY IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/external/lib/stoken.exe)
+
+add_executable(openconnect::stokenguiexe IMPORTED)
+set_property(TARGET openconnect::stokenguiexe PROPERTY IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/external/lib/stoken-gui.exe)
+
 add_library(openconnect::gmp SHARED IMPORTED)
 set_property(TARGET openconnect::gmp PROPERTY IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/external/lib/libgmp-10.dll)
 set_property(TARGET openconnect::gmp PROPERTY IMPORTED_IMPLIB ${CMAKE_BINARY_DIR}/external/lib/libgmp.dll.a)
@@ -111,4 +117,38 @@ install(
         ${CMAKE_BINARY_DIR}/external/lib/vpnc-script-win.js
     DESTINATION .
     COMPONENT App_Console
+)
+
+
+install(
+    FILES
+        ${CMAKE_BINARY_DIR}/external/lib/stoken-gui.exe
+        ${CMAKE_BINARY_DIR}/external/lib/stoken.exe
+        ${CMAKE_BINARY_DIR}/external/lib/libatk-1.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libcairo-2.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libcairo-gobject-2.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libdatrie-1.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libepoxy-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libexpat-1.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libfontconfig-1.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libfribidi-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libgdk-3-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libgdk_pixbuf-2.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libgio-2.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libglib-2.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libgmodule-2.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libgobject-2.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libgtk-3-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libpango-1.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libpangocairo-1.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libpangoft2-1.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libpangowin32-1.0-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/libpixman-1-0.dll
+        ${CMAKE_BINARY_DIR}/external/lib/password-dialog.ui
+        ${CMAKE_BINARY_DIR}/external/lib/pin-dialog.ui
+        ${CMAKE_BINARY_DIR}/external/lib/tokencode-detail.ui
+        ${CMAKE_BINARY_DIR}/external/lib/tokencode-small.ui
+        ${CMAKE_BINARY_DIR}/external/lib/stoken-gui.png
+    DESTINATION .
+    COMPONENT App
 )
